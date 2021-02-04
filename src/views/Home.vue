@@ -4,7 +4,7 @@
     <p>Organiza tus ideas, bookmarks, listas y más.</p>
     <div>
       <navigation-button
-        to="/dashboard"
+        to="/dashboard/new"
         danger="danger"
       >
         Empezar
@@ -44,6 +44,6 @@ p {
 div {
   display: flex;
   justify-content: space-between;
-  width: 30%;
+  max-width: 392px;
 }
 </style>

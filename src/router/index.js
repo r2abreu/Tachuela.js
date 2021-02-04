@@ -3,6 +3,9 @@ import VueRouter from 'vue-router';
 import Home from '../views/Home.vue';
 import Dashboard from '../views/Dashboard.vue';
 import NewEntry from '../views/NewEntry.vue';
+import Bookmark from '../views/Bookmark.vue';
+import List from '../views/List.vue';
+import Note from '../views/Note.vue';
 
 Vue.use(VueRouter);
 
@@ -23,10 +26,33 @@ const routes = [
 	{
 		path: '/dashboard',
 		name: 'Dashboard',
-		components: {
-			default: Dashboard,
-			a: NewEntry
-		}
+		component: Dashboard,
+		children: [
+			{
+				path: 'new',
+				components: {
+					new: NewEntry
+				}
+			},
+			{
+				path: 'note',
+				components: {
+					note: Note
+				}
+			},
+			{
+				path: 'bookmark',
+				components: {
+					bookmark: Bookmark
+				}
+			},
+			{
+				path: 'list',
+				components: {
+					list: List
+				}
+			}
+		]
 	}
 ];
 
