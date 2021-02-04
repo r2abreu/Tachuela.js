@@ -1,78 +1,55 @@
 <template>
   <main>
-    <h1>Nota</h1>
-    <form @submit.prevent="onSubmit">
-      <label for="title">Título</label>
-      <form-text
-        v-model="title"
-        id="title"
-        placeholder="Receta de Ensalada"
-        value="value"
-        :required="true"
+    <h1>{{title}}</h1>
+    {{id}}
+    <figure>
+      <img
+        src=""
+        alt=""
+        title=""
       />
-      <dropzone />
-      <label for="body">Texto</label>
-      <form-textarea />
-      <input
-        type="submit"
-        value="Guardar"
-      />
-    </form>
+    </figure>
+    <p>{{body}}</p>
+    <button>Edit</button>
   </main>
 </template>
 
 <script>
-import Dropzone from "../components/Dropzone.vue";
-import FormTextarea from "../components/FormTextarea.vue";
-import FormText from "../components/FormText.vue";
+import { mapGetters } from "vuex";
+
 export default {
-  data() {
-    return {
-      title: "",
-    };
+  data: () => ({
+    id: "",
+    title: "",
+    body: "",
+    image: "",
+  }),
+  name: "Note",
+  computed: mapGetters(["getEntry"]),
+  watch: {
+    $route() {
+      this.id = this.obtainId();
+      console.log(this.id);
+    },
   },
-  components: { Dropzone, FormText, FormTextarea },
-  name: "List",
+
+  // VISTA NO SE ESTA ACTUALIZANDO AL CAMBIAR DE RUTA
+  mounted() {
+    let entry = this.getEntry(this.id);
+    this.id = entry.id;
+    this.title = entry.title;
+    this.body = entry.body;
+    this.image = entry.image;
+  },
   methods: {
-    onSubmit() {
-      console.log(this.title);
+    obtainId() {
+      let url = window.location.href;
+      let id = url.slice(url.lastIndexOf("/") + 1);
+      return id;
     },
   },
 };
 </script>
 
-
 <style lang="scss" scoped>
-main {
-  width: 50%;
-  margin: auto;
-}
-form {
-  margin-top: 2em;
-  display: flex;
-  flex-direction: column;
-
-  * + * {
-    margin-bottom: 2em;
-  }
-}
-
-input[type="submit"] {
-  text-decoration: none;
-  border: 2px solid transparent;
-  color: #fff;
-  background-color: #ff1d2a;
-  padding: 0.7em 1.5em;
-  width: 181px;
-  margin-left: auto;
-  text-align: center;
-  font-size: 1.1em;
-  transition: all 0.2s ease-in;
-
-  &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0px 5px 15px 2px rgba(0, 0, 0, 0.38);
-    border-radius: 0.5em;
-  }
-}
 </style>

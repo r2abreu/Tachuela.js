@@ -1,10 +1,13 @@
 <template>
 
   <textarea
-    name="body"
-    id="bodby"
     cols="30"
     rows="10"
+    :id="id"
+    :placeholder="placeholder"
+    :value="value"
+    :required="required"
+    @input="updateValue($event.target.value)"
   ></textarea>
 
 </template>
@@ -12,6 +15,27 @@
 <script>
 export default {
   name: "FormTextarea",
+  props: {
+    id: {
+      type: String,
+      required: true,
+    },
+    value: {
+      type: String,
+    },
+    required: {
+      type: Boolean,
+      default: false,
+    },
+    placeholder: {
+      type: String,
+    },
+  },
+  methods: {
+    updateValue(value) {
+      this.$emit("input", value);
+    },
+  },
 };
 </script>
 

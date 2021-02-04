@@ -25,17 +25,15 @@
         nav
       >
         <v-list-item
-          v-for="item in items"
-          :key="item.title"
+          v-for="item in entries"
+          :key="item.id"
+          :to="`/dashboard/note/${item.id}`"
           link
         >
           <v-list-item-icon>
-            <v-icon>{{ item.icon }}</v-icon>
+            <v-icon>{{ icon(item) }}</v-icon>
           </v-list-item-icon>
-
-          <v-list-item-content>
-            <v-list-item-title>{{ item.title }}</v-list-item-title>
-          </v-list-item-content>
+          {{item.title}}
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
@@ -56,14 +54,39 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+let slugify = require("slugify");
+
 export default {
   data: () => ({
     drawer: null,
-    items: [
-      { title: "Compras", icon: "mdi-format-list-bulleted-square" },
-      { title: "Reseña", icon: "mdi-text-box-plus-outline" },
-      { title: "Bookmarks", icon: "mdi-bookmark" },
-    ],
+    entries: [],
   }),
+  computed: {
+    ...mapGetters(["getAllEntries"]),
+    icon() {
+      return (item) => {
+        switch (item.type) {
+          case "note":
+            return "mdi-text-box-outline";
+          case "list":
+            return "mdi-format-list-bulleted-square";
+          case "bookmark":
+            return "mdi-bookmark";
+        }
+      };
+    },
+  },
+  methods: {
+    makeSlug(str) {
+      return slugify(str).toLowerCase();
+    },
+  },
+  updated() {
+    console.log(this.entries);
+  },
+  created() {
+    this.entries = this.getAllEntries;
+  },
 };
 </script>

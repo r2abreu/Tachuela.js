@@ -1,6 +1,10 @@
 <template>
   <div class="dropzone">
-    <input type="file" />
+    <input
+      @change="onFileChange"
+      type="file"
+      :required="required"
+    />
     <span>Arrastra y suelta una imagen</span>
   </div>
 </template>
@@ -8,6 +12,18 @@
 <script>
 export default {
   name: "Dropzone",
+  props: {
+    required: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  methods: {
+    onFileChange({ target }) {
+      let file = target.files[0];
+      this.$emit("change", file);
+    },
+  },
 };
 </script>
 
