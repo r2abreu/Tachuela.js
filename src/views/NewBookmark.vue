@@ -1,24 +1,26 @@
 <template>
   <section>
-    <h1>Nota</h1>
+    <h1>Nuevo bookmark</h1>
     <form @submit.prevent="onSubmit">
       <label for="title">Título</label>
       <form-text
         v-model="title"
         id="title"
-        placeholder="Receta de Ensalada"
+        placeholder="Eventos de JavaScript"
         :required="true"
       />
-      <label for="body">Texto</label>
+      <label for="link">Enlace</label>
+      <form-text
+        v-model="link"
+        id="link"
+        placeholder="https://developer.mozilla.org/es/docs/Learn/JavaScript/Building_blocks/Eventos"
+        :required="true"
+      />
+      <label for="body">Descripción</label>
       <form-textarea
         v-model="body"
         id="body"
-        placeholder="Inserta el texto"
-        :required="true"
-      />
-      <label for="image">Imagen</label>
-      <dropzone
-        @change="onFileChange"
+        palceholder="Inserta una descripcion"
         :required="true"
       />
       <input
@@ -27,48 +29,39 @@
       />
     </form>
   </section>
+
 </template>
 
 <script>
-import Dropzone from "../components/Dropzone.vue";
-import FormTextarea from "../components/FormTextarea.vue";
-import FormText from "../components/FormText.vue";
-import { mapActions, mapGetters } from "vuex";
+import FormText from "../components/FormText";
+import FormTextarea from "../components/FormTextarea";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
-  name: "NewNote",
+  name: "NewBookmark",
   data: () => ({
     title: "",
     body: "",
-    image: "",
+    link: "",
   }),
-  components: { Dropzone, FormText, FormTextarea },
+  components: { FormText, FormTextarea },
   computed: mapGetters(["getAllEntries"]),
   methods: {
     ...mapActions(["buildEntry"]),
-    onFileChange(file) {
-      let reader = new FileReader();
-      reader.onload = () => {
-        this.image = reader.result;
-      };
-
-      reader.readAsDataURL(file);
-    },
     onSubmit() {
       let entry = {
         id: this.getAllEntries.length,
         title: this.title,
         body: this.body,
-        image: this.image,
-        type: "note",
+        link: this.link,
+        type: "bookmark",
       };
       this.buildEntry(entry);
-      this.$router.push(`/dashboard/note/${entry.id}`);
+      this.$router.push(`/dashboard/bookmark/${entry.id}`);
     },
   },
 };
 </script>
-
 
 <style lang="scss" scoped>
 form {

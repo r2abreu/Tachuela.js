@@ -27,7 +27,7 @@
         <v-list-item
           v-for="item in entries"
           :key="item.id"
-          :to="`/dashboard/note/${item.id}`"
+          :to="`/dashboard/${item.type}/${item.id}`"
           link
         >
           <v-list-item-icon>

@@ -21,9 +21,10 @@
 <script>
 import { mapGetters } from "vuex";
 import NavigationButton from "../components/NavigationButton";
-
+import { fetchEntry } from "../mixins";
 export default {
   name: "Note",
+  mixins: [fetchEntry],
   components: {
     NavigationButton,
   },
@@ -41,20 +42,6 @@ export default {
   },
   created() {
     this.provideData();
-  },
-  methods: {
-    obtainId() {
-      let url = window.location.href;
-      let id = url.slice(url.lastIndexOf("/") + 1);
-      return id;
-    },
-    provideData() {
-      this.id = this.obtainId();
-      let entry = this.getEntry(this.id);
-      this.title = entry.title;
-      this.body = entry.body;
-      this.image = entry.image;
-    },
   },
 };
 </script>

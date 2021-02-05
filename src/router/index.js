@@ -3,6 +3,7 @@ import VueRouter from 'vue-router';
 import Home from '../views/Home.vue';
 import Dashboard from '../views/Dashboard.vue';
 import NewEntry from '../views/NewEntry.vue';
+import NewBookmark from '../views/NewBookmark.vue';
 import Bookmark from '../views/Bookmark.vue';
 import List from '../views/List.vue';
 import NewNote from '../views/NewNote.vue';
@@ -49,6 +50,12 @@ const routes = [
 			},
 			{
 				path: 'bookmark',
+				components: {
+					bookmark: NewBookmark
+				}
+			},
+			{
+				path: 'bookmark/:id',
 				components: {
 					bookmark: Bookmark
 				}
