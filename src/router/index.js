@@ -5,9 +5,10 @@ import Dashboard from '../views/Dashboard.vue';
 import NewEntry from '../views/NewEntry.vue';
 import NewBookmark from '../views/NewBookmark.vue';
 import Bookmark from '../views/Bookmark.vue';
-import List from '../views/List.vue';
 import NewNote from '../views/NewNote.vue';
 import Note from '../views/Note.vue';
+import NewList from '../views/NewList.vue';
+import List from '../views/List.vue';
 
 Vue.use(VueRouter);
 
@@ -62,6 +63,12 @@ const routes = [
 			},
 			{
 				path: 'list',
+				components: {
+					list: NewList
+				}
+			},
+			{
+				path: 'list/:id',
 				components: {
 					list: List
 				}

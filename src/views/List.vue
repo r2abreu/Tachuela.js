@@ -1,5 +1,8 @@
 <template>
-  <h1>List view</h1>
+  <section>
+
+    List view
+  </section>
 </template>
 
 <script>
