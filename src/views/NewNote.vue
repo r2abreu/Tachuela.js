@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <section>
     <h1>Nota</h1>
     <form @submit.prevent="onSubmit">
       <label for="title">Título</label>
@@ -9,10 +9,6 @@
         placeholder="Receta de Ensalada"
         :required="true"
       />
-      <dropzone
-        @change="onFileChange"
-        :required="true"
-      />
       <label for="body">Texto</label>
       <form-textarea
         v-model="body"
@@ -20,12 +16,17 @@
         placeholder="Inserta el texto"
         :required="true"
       />
+      <label for="image">Imagen</label>
+      <dropzone
+        @change="onFileChange"
+        :required="true"
+      />
       <input
         type="submit"
         value="Guardar"
       />
     </form>
-  </main>
+  </section>
 </template>
 
 <script>
@@ -39,7 +40,7 @@ export default {
     return {
       title: "",
       body: "",
-      image: null,
+      image: "",
     };
   },
   components: { Dropzone, FormText, FormTextarea },
@@ -48,7 +49,12 @@ export default {
   methods: {
     ...mapActions(["buildEntry"]),
     onFileChange(file) {
-      this.image = file;
+      let reader = new FileReader();
+      reader.onload = () => {
+        this.image = reader.result;
+      };
+
+      reader.readAsDataURL(file);
     },
     onSubmit() {
       let entry = {
@@ -59,6 +65,7 @@ export default {
         type: "note",
       };
       this.buildEntry(entry);
+      this.$router.push(`/dashboard/note/${entry.id}`);
     },
   },
 };
@@ -66,16 +73,12 @@ export default {
 
 
 <style lang="scss" scoped>
-main {
-  width: 50%;
-  margin: auto;
-}
 form {
   margin-top: 2em;
   display: flex;
   flex-direction: column;
 
-  * + * {
+  * {
     margin-bottom: 2em;
   }
 }

@@ -41,7 +41,16 @@ export default {
 
 <style lang="scss" scoped>
 textarea {
-  background-color: #c4c4c4;
+  background-color: #fff;
+  border-bottom: 2px solid #ff1d6141;
   width: 100%;
+  resize: none;
+  padding: 1em;
+  transition: all 0.2s ease-in;
+
+  &:focus {
+    outline: transparent;
+    background-color: #c0c0c03d;
+  }
 }
 </style>

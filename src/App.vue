@@ -43,4 +43,9 @@ body {
 .fade-leave-active {
   opacity: 0;
 }
+
+section {
+  width: 50%;
+  margin: auto;
+}
 </style>

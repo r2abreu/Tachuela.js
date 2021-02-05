@@ -4,13 +4,18 @@
       @change="onFileChange"
       type="file"
       :required="required"
+      id="image"
+      accept="image/*"
     />
-    <span>Arrastra y suelta una imagen</span>
+    <span>{{message}}</span>
   </div>
 </template>
 
 <script>
 export default {
+  data: () => ({
+    message: "Arrastra y suelta una imagen",
+  }),
   name: "Dropzone",
   props: {
     required: {
@@ -21,6 +26,7 @@ export default {
   methods: {
     onFileChange({ target }) {
       let file = target.files[0];
+      this.message = `Nueva imagen: ${file.name}`;
       this.$emit("change", file);
     },
   },
@@ -32,10 +38,15 @@ export default {
   width: 100%;
   height: 100px;
   position: relative;
-  border: 2px dashed #000;
+  border: 2px dashed #ff1d6141;
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: all 0.2s ease-in;
+
+  &:hover {
+    background-color: #c0c0c03d;
+  }
 
   span {
     margin: 0;

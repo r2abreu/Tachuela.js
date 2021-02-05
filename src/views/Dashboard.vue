@@ -45,10 +45,15 @@
     </v-app-bar>
 
     <v-main>
-      <router-view name="new"></router-view>
-      <router-view name="note"></router-view>
-      <router-view name="bookmark"></router-view>
-      <router-view name="list"></router-view>
+      <transition
+        name="fade"
+        mode="out-in"
+      >
+        <router-view name="new"></router-view>
+        <router-view name="note"></router-view>
+        <router-view name="bookmark"></router-view>
+        <router-view name="list"></router-view>
+      </transition>
     </v-main>
   </v-app>
 </template>

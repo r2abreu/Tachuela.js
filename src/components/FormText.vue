@@ -6,6 +6,7 @@
     :value="value"
     :required="required"
     @input="updateValue($event.target.value)"
+    autocomplete="off"
   >
 </template>
 
@@ -38,6 +39,14 @@ export default {
 
 <style lang="scss" scoped>
 input[type="text"] {
-  background-color: #c4c4c4;
+  background-color: #fff;
+  padding: 0.5em;
+  border-bottom: 2px solid #ff1d6141;
+  transition: all 0.2s ease-in;
+
+  &:focus {
+    outline: transparent;
+    background-color: rgba(192, 192, 192, 0.24);
+  }
 }
 </style>
