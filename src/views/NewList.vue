@@ -12,7 +12,6 @@
       <v-text-field
         v-model="todo"
         id="todo"
-        required="true"
         placeholder="Tarea"
         autocomplete="off"
       >
@@ -45,6 +44,7 @@
 
 <script>
 import FormText from "../components/FormText";
+import { mapActions, mapGetters } from "vuex";
 export default {
   name: "NewList",
   data: () => ({
@@ -53,7 +53,19 @@ export default {
     tasks: [],
   }),
   components: { FormText },
+  computed: mapGetters(["getAllEntries"]),
   methods: {
+    ...mapActions(["buildEntry"]),
+    onSubmit() {
+      let entry = {
+        id: this.getAllEntries.length,
+        title: this.title,
+        tasks: this.tasks,
+        type: "list",
+      };
+      this.buildEntry(entry);
+      this.$router.push(`/dashboard/list/${entry.id}`);
+    },
     onClick() {
       let task = {
         text: this.todo,
