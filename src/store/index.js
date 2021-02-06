@@ -37,17 +37,17 @@ export default new Vuex.Store({
 		setEntry(state, entry) {
 			state.entries.push(entry);
 		},
-		removeEntry(state, entries) {
-			state.entries = entries;
+		removeEntry(state, index) {
+			state.entries.splice(index, 1);
 		}
 	},
 	actions: {
 		buildEntry({ commit }, entry) {
 			commit('setEntry', entry);
 		},
-		removeEntry({ commit }, state, id) {
-			let filteredEntries = state.entry.filter((entry) => entry.id !== id);
-			commit('removeNote', filteredEntries);
+		removeEntry({ commit }, entry) {
+			let index = this.state.entries.indexOf(entry);
+			commit('removeEntry', index);
 		}
 	}
 });

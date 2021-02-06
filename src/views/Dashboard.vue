@@ -30,10 +30,16 @@
           :to="`/dashboard/${item.type}/${item.id}`"
           link
         >
-          <v-list-item-icon>
+          <v-list-item-icon class="mr-3">
             <v-icon>{{ icon(item) }}</v-icon>
           </v-list-item-icon>
           {{item.title}}
+          <v-list-item-icon
+            class="ml-auto"
+            @click.prevent="onDelete(item)"
+          >
+            <v-icon>mdi-delete</v-icon>
+          </v-list-item-icon>
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
@@ -59,7 +65,7 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 let slugify = require("slugify");
 
 export default {
@@ -83,15 +89,23 @@ export default {
     },
   },
   methods: {
+    ...mapActions(["removeEntry"]),
     makeSlug(str) {
       return slugify(str).toLowerCase();
     },
+    onDelete(item) {
+      this.removeEntry(item);
+    },
   },
   updated() {
-    console.log(this.entries);
+    console.log("updated");
+    this.entries = this.getAllEntries;
   },
   created() {
     this.entries = this.getAllEntries;
   },
 };
 </script>
+
+<style lang="scss" scoped>
+</style>
