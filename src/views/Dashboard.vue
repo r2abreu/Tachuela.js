@@ -12,9 +12,9 @@
           <v-list-item-title class="title">
             Tachuela.js
           </v-list-item-title>
-          <!-- <v-list-item-subtitle>
-            subtext
-          </v-list-item-subtitle> -->
+          <v-list-item-subtitle>
+            v1.0
+          </v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
       <v-divider></v-divider>
