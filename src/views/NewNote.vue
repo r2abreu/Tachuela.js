@@ -37,6 +37,9 @@ import { mapActions, mapGetters } from "vuex";
 
 export default {
   name: "NewNote",
+  metaInfo: {
+    title: "Nueva Nota",
+  },
   data: () => ({
     title: "",
     body: "",

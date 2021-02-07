@@ -24,6 +24,12 @@ import { fetchEntry } from "../mixins";
 
 export default {
   name: "Bookmark",
+  metaInfo() {
+    let data = this;
+    return {
+      title: data ? this.title : "Cargando...",
+    };
+  },
   mixins: [fetchEntry],
   data: () => ({
     id: "",
@@ -42,7 +48,6 @@ export default {
   },
   created() {
     this.provideData();
-    console.log(this.id, this.title, this.body, this.link);
   },
 };
 </script>

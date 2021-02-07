@@ -2,7 +2,7 @@
   <section>
     <h1>Nueva Lista</h1>
     <form @submit.prevent="onSubmit">
-      <label for="title">Titulo</label>
+      <label for="title">Título</label>
       <form-text
         v-model="title"
         id="title"
@@ -47,6 +47,9 @@ import FormText from "../components/FormText";
 import { mapActions, mapGetters } from "vuex";
 export default {
   name: "NewList",
+  metaInfo: {
+    title: "Nueva Lista",
+  },
   data: () => ({
     title: "",
     todo: "",
@@ -109,6 +112,12 @@ input[type="submit"] {
     transform: translateY(-5px);
     box-shadow: 0px 5px 15px 2px rgba(0, 0, 0, 0.38);
     border-radius: 0.5em;
+  }
+}
+
+section {
+  label {
+    margin-top: 3em;
   }
 }
 

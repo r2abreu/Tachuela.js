@@ -10,6 +10,10 @@
 <script>
 export default {
   name: "App",
+  metaInfo: {
+    title: "Inicio",
+    titleTemplate: "%s | Tachuela",
+  },
 };
 </script>
 

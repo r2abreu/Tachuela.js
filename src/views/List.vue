@@ -24,6 +24,12 @@ import { fetchEntry } from "../mixins";
 
 export default {
   name: "List",
+  metaInfo() {
+    let data = this;
+    return {
+      title: data ? this.title : "Cargando...",
+    };
+  },
   mixins: [fetchEntry],
   components: {
     NavigationButton,
@@ -49,5 +55,11 @@ export default {
 <style lang="scss" scoped>
 a {
   margin-top: 1em;
+}
+
+section {
+  * + * {
+    margin-top: 1em;
+  }
 }
 </style>

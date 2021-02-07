@@ -43,6 +43,9 @@ import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "NewBookmark",
+  metaInfo: {
+    title: "Nuevo Marcador",
+  },
   data: () => ({
     title: "",
     body: "",

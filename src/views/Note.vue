@@ -25,6 +25,12 @@ import NavigationButton from "../components/NavigationButton";
 import { fetchEntry } from "../mixins";
 export default {
   name: "Note",
+  metaInfo() {
+    let data = this;
+    return {
+      title: data ? this.title : "Cargando...",
+    };
+  },
   mixins: [fetchEntry],
   components: {
     NavigationButton,
@@ -42,6 +48,7 @@ export default {
     },
   },
   created() {
+    console.log(this);
     this.provideData();
   },
 };

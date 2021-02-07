@@ -21,7 +21,7 @@
           >
             mdi-bookmark
           </v-icon>
-          Bookmark
+          Marcador
         </div>
       </router-link>
       <router-link to="/dashboard/list">
@@ -42,6 +42,9 @@
 <script>
 export default {
   name: "NewEntry",
+  metaInfo: {
+    title: "Nueva Entrada",
+  },
 };
 </script>
 
