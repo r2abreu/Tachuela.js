@@ -17,7 +17,6 @@
           </v-list-item-subtitle> -->
         </v-list-item-content>
       </v-list-item>
-
       <v-divider></v-divider>
 
       <v-list
@@ -33,24 +32,27 @@
           color="#ff1d2a"
         >
         </v-text-field>
-
-        <v-list-item
-          v-for="item in filtered"
-          :key="item.id"
-          :to="`/dashboard/${item.type}/${item.id}`"
-          link
-        >
-          <v-list-item-icon class="mr-3">
-            <v-icon>{{ icon(item) }}</v-icon>
-          </v-list-item-icon>
-          {{item.title}}
-          <v-list-item-icon
-            class="ml-auto"
-            @click.prevent="onDelete(item)"
+        <div v-if="filtered.length">
+          <v-list-item
+            v-for="item in filtered"
+            :key="item.id"
+            :to="`/dashboard/${item.type}/${item.id}`"
+            link
           >
-            <v-icon>mdi-delete</v-icon>
-          </v-list-item-icon>
-        </v-list-item>
+            <v-list-item-icon class="mr-3">
+              <v-icon>{{ icon(item) }}</v-icon>
+            </v-list-item-icon>
+            {{item.title}}
+
+            <v-list-item-icon
+              class="ml-auto"
+              @click.prevent="onDelete(item)"
+            >
+              <v-icon>mdi-delete</v-icon>
+            </v-list-item-icon>
+          </v-list-item>
+        </div>
+        <p v-else>No hay resultados.</p>
       </v-list>
     </v-navigation-drawer>
 
@@ -126,6 +128,7 @@ export default {
   },
   updated() {
     this.entries = this.getAllEntries;
+    console.log(this.filtered);
   },
   created() {
     this.entries = this.getAllEntries;
@@ -134,4 +137,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.v-text-field {
+  width: 90%;
+  margin: 0.3em auto 0;
+}
+
+p {
+  text-align: center;
+}
 </style>
