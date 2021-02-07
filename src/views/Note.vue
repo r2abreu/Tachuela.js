@@ -10,6 +10,7 @@
         />
       </figure>
     </div>
+    <h2>Nota:</h2>
     <p>{{body}}</p>
     <navigation-button
       to="/"
@@ -72,7 +73,7 @@ div {
   align-items: center;
 
   figure {
-    flex: 1 1 30%;
+    flex: 1 1 20%;
 
     img {
       width: 100%;
@@ -82,7 +83,45 @@ div {
   }
 
   h1 {
-    flex: 1 1 40%;
+    flex: 1 1 200px;
+  }
+
+  h2 {
+    margin-top: 1em;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  section {
+    width: 100%;
+  }
+
+  div {
+    figure {
+      width: 5em;
+      flex-basis: min-content;
+    }
+
+    h1 {
+      flex: 1 1 10%;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    div {
+      display: initial;
+
+      figure {
+        width: 10em;
+        margin: auto;
+      }
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    h1 {
+      font-size: 2em;
+    }
   }
 }
 </style>

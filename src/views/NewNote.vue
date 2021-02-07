@@ -99,4 +99,10 @@ input[type="submit"] {
     border-radius: 0.5em;
   }
 }
+
+@media screen and (max-width: 800px) {
+  input[type="submit"] {
+    width: 100%;
+  }
+}
 </style>

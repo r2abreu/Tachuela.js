@@ -25,7 +25,7 @@
         nav
       >
         <v-list-item
-          v-for="item in entries"
+          v-for="item in reversed"
           :key="item.id"
           :to="`/dashboard/${item.type}/${item.id}`"
           link
@@ -61,10 +61,7 @@
       >
         <router-view name="new"></router-view>
         <router-view name="note"></router-view>
-        <router-view
-          name="bookmark"
-          appear
-        ></router-view>
+        <router-view name="bookmark"></router-view>
         <router-view name="list"></router-view>
       </transition>
     </v-main>
@@ -81,6 +78,9 @@ export default {
     entries: [],
   }),
   computed: {
+    reversed() {
+      return [...this.entries].reverse();
+    },
     ...mapGetters(["getAllEntries"]),
     icon() {
       return (item) => {
@@ -105,7 +105,6 @@ export default {
     },
   },
   updated() {
-    console.log("updated");
     this.entries = this.getAllEntries;
   },
   created() {

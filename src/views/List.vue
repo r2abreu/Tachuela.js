@@ -1,6 +1,7 @@
 <template>
   <section>
     <h1>{{title}}</h1>
+    <h2>Tareas</h2>
     <v-list>
       <v-list-item
         v-for="task in tasks"
@@ -45,3 +46,8 @@ export default {
 };
 </script>
 
+<style lang="scss" scoped>
+a {
+  margin-top: 1em;
+}
+</style>

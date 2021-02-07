@@ -8,7 +8,7 @@
             x-large
             class="danger"
           >
-            mdi-format-list-bulleted-square
+            mdi-text-box-outline
           </v-icon>
           Nota
         </div>
@@ -94,6 +94,10 @@ div {
 }
 
 @media screen and (max-width: 600px) {
+  h1 {
+    margin-bottom: 1em;
+  }
+
   article {
     flex-direction: column;
 

@@ -15,13 +15,17 @@
         id="link"
         placeholder="https://developer.mozilla.org/es/docs/Learn/JavaScript/Building_blocks/Eventos"
         :required="true"
+        pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)"
+        title="Por favor, ingresa una URL correcta"
       />
       <label for="body">Descripción</label>
       <form-textarea
         v-model="body"
         id="body"
-        palceholder="Inserta una descripcion"
+        placeholder="Inserta una descripcion"
         :required="true"
+        :minlength="5"
+        :maxlength="20"
       />
       <input
         type="submit"
@@ -90,6 +94,12 @@ input[type="submit"] {
     transform: translateY(-5px);
     box-shadow: 0px 5px 15px 2px rgba(0, 0, 0, 0.38);
     border-radius: 0.5em;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  input[type="submit"] {
+    width: 100%;
   }
 }
 </style>

@@ -110,10 +110,11 @@ input[type="submit"] {
     box-shadow: 0px 5px 15px 2px rgba(0, 0, 0, 0.38);
     border-radius: 0.5em;
   }
+}
 
-  .checo {
-    cursor: pointer;
-    border: 2px solid red;
+@media screen and (max-width: 800px) {
+  input[type="submit"] {
+    width: 100%;
   }
 }
 </style>

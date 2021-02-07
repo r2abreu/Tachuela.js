@@ -48,4 +48,10 @@ section {
   width: 50%;
   margin: auto;
 }
+
+@media screen and (max-width: 800px) {
+  section {
+    width: 100%;
+  }
+}
 </style>

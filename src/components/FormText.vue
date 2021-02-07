@@ -1,12 +1,15 @@
 <template>
   <input
     type="text"
+    minlength="5"
+    maxlength="20"
     :id="id"
     :placeholder="placeholder"
     :value="value"
     :required="required"
     @input="updateValue($event.target.value)"
     autocomplete="off"
+    :pattern="pattern"
   >
 </template>
 
@@ -26,6 +29,9 @@ export default {
       default: false,
     },
     placeholder: {
+      type: String,
+    },
+    pattern: {
       type: String,
     },
   },

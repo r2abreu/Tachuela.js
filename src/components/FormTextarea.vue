@@ -3,6 +3,8 @@
   <textarea
     cols="30"
     rows="10"
+    minlength="5"
+    maxlength="20"
     :id="id"
     :placeholder="placeholder"
     :value="value"
