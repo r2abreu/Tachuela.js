@@ -24,8 +24,18 @@
         dense
         nav
       >
+        <v-text-field
+          filled
+          placeholder="Buscar"
+          v-model="query"
+          dense
+          append-icon="mdi-search"
+          color="#ff1d2a"
+        >
+        </v-text-field>
+
         <v-list-item
-          v-for="item in reversed"
+          v-for="item in filtered"
           :key="item.id"
           :to="`/dashboard/${item.type}/${item.id}`"
           link
@@ -59,6 +69,8 @@
         name="fade"
         mode="out-in"
       >
+
+        {{filtered}}
         <router-view name="new"></router-view>
         <router-view name="note"></router-view>
         <router-view name="bookmark"></router-view>
@@ -76,10 +88,18 @@ export default {
   data: () => ({
     drawer: null,
     entries: [],
+    query: "",
   }),
   computed: {
     reversed() {
       return [...this.entries].reverse();
+    },
+    filtered() {
+      return this.reversed.filter((entry) => {
+        let query = this.query.toLowerCase();
+        let title = entry.title.toLowerCase();
+        return title.indexOf(query) != -1 ? entry : null;
+      });
     },
     ...mapGetters(["getAllEntries"]),
     icon() {
