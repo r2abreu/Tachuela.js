@@ -32,7 +32,7 @@
           >
             mdi-format-list-bulleted-square
           </v-icon>
-          List
+          Lista
         </div>
       </router-link>
     </article>
@@ -91,5 +91,15 @@ div {
   border: 2px solid transparent;
   color: #ff1d2a;
   filter: grayscale(1);
+}
+
+@media screen and (max-width: 600px) {
+  article {
+    flex-direction: column;
+
+    div {
+      margin: 0.5em;
+    }
+  }
 }
 </style>

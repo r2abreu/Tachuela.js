@@ -1,12 +1,13 @@
 <template>
   <section>
     <h1>{{title}}</h1>
-    <p>Enlace</p>
+    <h2>Descripción:</h2>
+    <p>{{body}}</p>
+    <h2>Enlace:</h2>
     <a
       :href="link"
       target="_blank"
     >{{link}}</a>
-    <p>{{body}}</p>
     <navigation-button
       to="/"
       danger="danger"
