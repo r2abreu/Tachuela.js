@@ -44,7 +44,11 @@
       </v-list>
     </v-navigation-drawer>
 
-    <v-app-bar app>
+    <v-app-bar
+      color="#ff1d2a"
+      app
+      dark
+    >
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
 
       <v-toolbar-title>Tablero</v-toolbar-title>

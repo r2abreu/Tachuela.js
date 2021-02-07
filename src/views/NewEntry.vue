@@ -1,39 +1,95 @@
 <template>
-  <main>
-    <h1>Insertar nueva</h1>
-    <navigation-button to="/dashboard/note">Nota</navigation-button>
-    <navigation-button to="/dashboard/bookmark">Bookmark</navigation-button>
-    <navigation-button to="/dashboard/list">Lista</navigation-button>
-  </main>
+  <section>
+    <h1>Insertar...</h1>
+    <article>
+      <router-link to="/dashboard/note">
+        <div>
+          <v-icon
+            x-large
+            class="danger"
+          >
+            mdi-format-list-bulleted-square
+          </v-icon>
+          Nota
+        </div>
+      </router-link>
+      <router-link to="/dashboard/bookmark">
+        <div>
+          <v-icon
+            x-large
+            class="danger"
+          >
+            mdi-bookmark
+          </v-icon>
+          Bookmark
+        </div>
+      </router-link>
+      <router-link to="/dashboard/list">
+        <div>
+          <v-icon
+            x-large
+            class="danger"
+          >
+            mdi-format-list-bulleted-square
+          </v-icon>
+          List
+        </div>
+      </router-link>
+    </article>
+  </section>
 </template>
 
 <script>
-import NavigationButton from "../components/NavigationButton";
-
 export default {
   name: "NewEntry",
-  components: {
-    NavigationButton,
-  },
 };
 </script>
 
 
 <style lang="scss" scoped>
-main {
-  width: 50%;
-  margin: auto;
+h1 {
+  font-size: 3em;
+}
+h1,
+a {
+  margin-bottom: 1.5em;
+}
 
-  h1,
-  a {
-    margin-bottom: 1.5em;
-  }
+a {
+  display: block;
+  width: 100%;
+  border-radius: 0.5em;
+  font-size: 1.5em;
+  text-decoration: none;
+  transition: all 0.2s ease-in;
+}
 
-  a {
-    display: block;
-    width: 100%;
-    border-radius: 0.5em;
-    font-size: 1.5em;
+a:hover {
+  transform: translateY(-5px) scale(1.2);
+  .danger {
+    filter: grayscale(0);
   }
+}
+
+article {
+  display: flex;
+}
+
+div {
+  color: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 5em;
+
+  i {
+    font-size: 4em;
+  }
+}
+
+.danger {
+  border: 2px solid transparent;
+  color: #ff1d2a;
+  filter: grayscale(1);
 }
 </style>
