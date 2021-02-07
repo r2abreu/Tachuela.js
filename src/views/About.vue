@@ -73,4 +73,15 @@ a:hover {
   color: #fff;
   background-color: #ff1d2a;
 }
+
+@media screen and (max-width: 400px) {
+  div {
+    flex-direction: column;
+
+    a {
+      width: 100%;
+      margin-top: 1em;
+    }
+  }
+}
 </style>
