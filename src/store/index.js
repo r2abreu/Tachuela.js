@@ -22,7 +22,7 @@ export default new Vuex.Store({
 				link: 'https://vuejs.org/v2/guide/mixins.html',
 				type: 'bookmark'
 			},
-			{ id: '2', title: 'Lista de compras', type: 'list' }
+			{ id: '2', title: 'Lista de compras', tasks: [ { text: 'manzanas' } ], type: 'list' }
 		]
 	}),
 	getters: {

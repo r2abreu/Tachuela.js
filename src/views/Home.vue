@@ -27,7 +27,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 h1 {
   font-size: 4em;
   color: #444444;
@@ -45,5 +45,25 @@ div {
   display: flex;
   justify-content: space-between;
   max-width: 392px;
+}
+
+@media screen and (max-width: 1370px) {
+  h1 {
+    margin-bottom: 0.5em;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  h1 {
+    margin-bottom: 0.5em;
+  }
+
+  p {
+    width: 100%;
+  }
+
+  div {
+    max-width: 100%;
+  }
 }
 </style>

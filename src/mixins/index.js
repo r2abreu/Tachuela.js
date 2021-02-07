@@ -12,6 +12,7 @@ export const fetchEntry = {
 			this.body = entry.body;
 			this.image = entry.image;
 			this.link = entry.link;
+			this.tasks = entry.tasks;
 		}
 	}
 };
