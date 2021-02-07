@@ -60,10 +60,22 @@ div {
 
   p {
     width: 100%;
+    font-size: 3.5em;
   }
 
   div {
     max-width: 100%;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  div {
+    flex-direction: column;
+    justify-content: space-around;
+    height: 150px;
+    a {
+      width: 100%;
+    }
   }
 }
 </style>
